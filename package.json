@@ -10,8 +10,11 @@
     "lint": "eslint src/**/*.js",
     "lint-fix": "eslint src/**/*.js --cache --fix",
     "prepare": "husky install",
-    "test": "npm run test-unit",
-    "test-unit": "jest"
+    "test": "npm run test-unit && npm run test-e2e-cli",
+    "test-unit": "jest",
+    "test-e2e": "cypress open",
+    "test-e2e-report": "cypress run --reporter mochawesome",
+    "test-e2e-cli": "cypress run"
   },
   "keywords": [],
   "author": "Noroff",
@@ -36,7 +39,7 @@
   "lint-staged": {
     "*.js": [
       "prettier --write",
-      "eslint --fix"
+      "eslint --cache --fix"
     ],
     "*.html": [
       "prettier --write"
